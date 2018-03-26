@@ -25,6 +25,14 @@ Proc(cmd=goo [], redirs=[INREDIR(gaa), OUTREDIR(gooo), ERRREDIR(ga)])
 Proc(cmd=dummy [], redirs=[])
 ```
 
+## INSTALL
+
+This python module is available through [https://pypi.org/](PyPi) using the following command:
+
+```
+pip install simple-shell-parser
+```
+
 
 
 
