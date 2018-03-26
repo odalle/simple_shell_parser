@@ -25,6 +25,18 @@ Proc(cmd=goo [], redirs=[INREDIR(gaa), OUTREDIR(gooo), ERRREDIR(ga)])
 Proc(cmd=dummy [], redirs=[])
 ```
 
+All elements displayed in the previous output are objects of the following classes:
+* PROCESS
+* CMD
+* REDIR (INREDIR, OUTREDIR, ERREDIR)
+
+The pipeline is list of PROCESS objects and the command args are also a list object attribute of the CMD class.
+
+See the `lexer.py` source code or the python doc for more details ...
+
+
+
+
 ## INSTALL
 
 This python module is available through [https://pypi.org/](PyPi) using the following command:
