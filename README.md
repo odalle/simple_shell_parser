@@ -41,6 +41,35 @@ The pipeline is list of PROCESS objects and the command args are also a list obj
 
 See the `lexer.py` source code or the python doc for more details ...
 
+## PREREQUISITE
+
+This python module requires python version 3.X.
+In case this version is not already installed and you do NOT have admin permissions, you can still install the latest version of python using [pyenv](https://github.com/pyenv/pyenv). For example as follows with shell `zsh` (see also instructions on [pyenv](https://github.com/pyenv/pyenv) page for other environments):
+
+```
+$ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+$ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+$ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+$ echo 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+$ source ~/.zshrc
+```
+
+
+Then install the desired python version, eg. 3.6.4:
+
+```
+$ pyenv install 3.6.4
+```
+
+And finally make this version your new default version and re-read your shell environement file:
+
+```
+$ pyenv global 3.6.4
+$ source ~/.zshrc
+```
+
+If no error occured so far, your set to go!
+
 ## INSTALL
 
 This python module is available through [PyPi](https://pypi.org/) using the following command:
