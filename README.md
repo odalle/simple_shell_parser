@@ -7,7 +7,7 @@ foo toto > bar 2>> baz | fizz >> fuzzz << EOF | goo > gooo < gaa 2> ga | dummy
 ```
 
 This parser is meant for educational purpose and, therefore, should not be relied on for advanced projects.
-It is built using the very nice [https://github.com/igordejanovic/parglare](parglare) python parser.
+It is built using the very nice [parglare](https://github.com/igordejanovic/parglare) python parser.
 
 
 The parsing of a command like the previous one produces a simple Abstract Syntax Tree: a collection of objects that reflect the syntax structure of the line being parsed.
@@ -43,7 +43,7 @@ See the `lexer.py` source code or the python doc for more details ...
 
 ## INSTALL
 
-This python module is available through [https://pypi.org/](PyPi) using the following command:
+This python module is available through [PyPi](https://pypi.org/) using the following command:
 
 ```
 pip install simple-shell-parser
