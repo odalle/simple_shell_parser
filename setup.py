@@ -48,6 +48,7 @@ setup(
     # This field corresponds to the "Home-Page" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#home-page-optional
     #url='https://github.com/pypa/sampleproject',  # Optional
+    url='https://github.com/odalle/simple_shell_parser',
 
     # This should be your name or the name of the organization which owns the
     # project.
