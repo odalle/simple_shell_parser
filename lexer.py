@@ -154,7 +154,7 @@ ERR_REDIR: '2>' filespec
 | ERRAPPEND_REDIR;
 ERRAPPEND_REDIR: '2>>' filespec;
 space: /[\t ]+/;
-arg: /([^"\/>< ]+|"[^"]+")+/;
+arg: /([^">< ]+|"[^"]+")+/;
 keyword: /\w+/;
 filespec: /([^<>\| ]|\\[<]|\\>|\\\|)+/;
 """
@@ -264,7 +264,7 @@ _g = Grammar.from_string(_grammar)
 _parser = Parser(_g, debug=False, actions=_actions)
 
 if __name__ == "__main__":
-    result = get_parser().parse("toto titi tata >> abc < toto > tutu << discard| titi > abcdef 2>> errappend| truc 2> err | bidule << EOF")
+    result = get_parser().parse("toto titi tata/toto >> abc/def < toto > tutu << discard| titi > abcdef 2>> errappend| truc 2> err | bidule << EOF")
 
     for job in result:
         print(job)
