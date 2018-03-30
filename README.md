@@ -16,7 +16,7 @@ The list elements are intances of the PROCESS class defined in the parser module
 
 ```python
 #!/usr/bin/env python3
-import simple_shell_parser.lexer as ssp
+import lexer as ssp
 
 result = ssp.get_parser().parse('foo toto > bar 2>> baz | fizz >> fuzzz << EOF | goo > gooo < gaa 2> ga | dummy')
 
