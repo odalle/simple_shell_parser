@@ -4,6 +4,14 @@ from parglare import Parser, Grammar
 
 
 class PROCESS():
+    """
+    A Process.
+
+    A process object is composed of two elements: a command (a programm with 
+    parameters) and file redirections.
+
+    NB: Pipe redirections are NOT part of the process object. 
+    """
     def __init__(self,cmd,redirs=None):
         self._cmd = cmd
         if redirs is None: 
@@ -13,21 +21,35 @@ class PROCESS():
     def __str__(self):
         return "Proc(cmd={}, redirs=[{}])".format(self._cmd,self._redirs)
 
+    def getCommand(self):
+        return self._cmd
+
+    def getRedirs(self):
+        return self._redirs
+
+    
+
 class CMD():
-    def __init__(self,command,args=None):
-        self._command = command
+    """
+    A Command.
+
+    A command object is composed of a program name and command line arguments and
+    parameters.
+    """
+    def __init__(self,program,args=None):
+        self._program = program
         if args is None:
             args =[]
         self._args = args
 
-    def getCommand(self):
-        return self._command
+    def getProgram(self):
+        return self._program
 
     def getArgs(self):
         return self._args
 
     def __str__(self):
-        return self._command + ' [' + ' '.join(self._args) + ']'
+        return self._program + ' [' + ' '.join(self._args) + ']'
 
 class REDIRS():
     """ A redirection container.
@@ -44,6 +66,9 @@ class REDIRS():
 
     def pop(self,redir):
         return self._redirs.pop()
+
+    def __iter__(self):
+        return iter(self._redirs)
 
     def __str__(self):
         retval = ""
@@ -65,8 +90,17 @@ class REDIR():
     def getFileSpec(self):
         return self._filespec
 
+    def isOutput(self):
+        return False
+
+    def isInput(self):
+        return False
+
+    def isError(self):
+        return False
+
     def __eq__(self, other):
-        """ To vaoid duplicates, object with same type are evalutaed as equal. """
+        """ To avoid duplicates, object with same type are evalutaed as equal. """
         if isinstance(other,self.__class__):
             return True
         return False
@@ -92,6 +126,9 @@ class OUTREDIR(REDIR):
     def isAppend(self):
         return self._append
 
+    def isOutput(self):
+        return True
+
     def __str__(self):
         extra = ""
         if self._append: 
@@ -107,6 +144,12 @@ class ERRREDIR(OUTREDIR):
     def __init__(self,filespec, append=False):
         super().__init__(filespec,append)
 
+    def isError(self):
+        return True
+
+    def isOutput(self):
+        return False
+
 class INREDIR(REDIR):
     """ Input redirection. ("Here"-able )
     """
@@ -116,6 +159,9 @@ class INREDIR(REDIR):
 
     def isHere(self):
         return self._here
+
+    def isInput(self):
+        return True
 
     def __str__(self):
         extra = ""
