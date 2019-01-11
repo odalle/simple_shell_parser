@@ -199,6 +199,8 @@ OUTAPPEND_REDIR: '>>' filespec;
 ERR_REDIR: '2>' filespec 
 | ERRAPPEND_REDIR;
 ERRAPPEND_REDIR: '2>>' filespec;
+
+terminals
 space: /[\t ]+/;
 arg: /([^">< ]+|"[^"]+")+/;
 keyword: /\w+/;
